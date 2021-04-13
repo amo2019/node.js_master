@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register and Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-size: 20px;
+        font-family: "Monserrat", sans-serif;
+        line-height: 1.7;
+      }
+      h1 {
+        font-weight: 300;
+      }
+      form {
+        padding: 0 2rem;
+        margin: 1rem 0;
+        font-weight: 100;
+      }
+      .formBox {
+        display: flex;
+        flex-direction: row;
+        margin: 1rem;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: row;
+      }
+      .formBox label {
+        flex-basis: 20ch;
+        text-align: end;
+        padding-right: 2rem;
+        padding-inline-end: 2rem;
+        font-size: 0.8rem;
+        font-weight: 100;
+        color: #444;
+      }
+      .formBox input {
+        flex-basis: auto;
+        font-size: 1rem;
+        font-weight: 100;
+        color: #333;
+        position: relative;
+        padding: 0.25rem 1rem;
+      }
+      .formBox button {
+        background-color: #4caf50;
+        border: none;
+        color: #fff;
+        padding: 0.25rem 2rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 100;
+        flex-basis: auto;
+        margin-left: 5ch;
+        margin-inline-start: 5ch;
+      }
+      legend {
+        margin: 0 4rem;
+        padding: 0 1rem;
+        color: #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <form action="/#" id="regForm" method="POST" autocomplete="off">
+        <legend>
+          <fieldset>Register</fieldset>
+          <div class="formBox">
+            <label for="email">Email</label
+            ><input class="email" type="email" autocomplete="off" />
+          </div>
+          <div class="formBox">
+            <label for="pass">Password</label
+            ><input class="pass" type="password" autocomplete="off" />
+          </div>
+          <div class="formBox">
+            <label for="fname">First Name</label
+            ><input class="fname" type="text" autocomplete="off" />
+          </div>
+          <div class="formBox">
+            <label for="lname">Last Name</label
+            ><input class="lname" type="text" autocomplete="off" />
+          </div>
+          <div class="formBox">
+            <label for="addr">Address</label
+            ><input class="addr" type="text" autocomplete="off" />
+          </div>
+          <div class="buttons">
+            <div class="formBox"><button>Register</button></div>
+            <div class="formBox Ed"><button>Edit</button></div>
+            <div class="formBox Del"><button>Delete</button></div>
+          </div>
+        </legend>
+      </form>
+    </section>
+    <section>
+      <form action="/#" id="loginForm" method="POST" autocomplete="off">
+        <legend>
+          <fieldset>Login</fieldset>
+          <div class="formBox">
+            <label for="email">Email</label
+            ><input class="email" type="email" autocomplete="off" />
+          </div>
+          <div class="formBox">
+            <label for="pass">Password</label
+            ><input class="pass" type="password" autocomplete="off" />
+          </div>
+          <div class="buttons">
+            <div class="formBox"><button>Login</button></div>
+            <div class="formBox Out"><button>Logout</button></div>
+          </div>
+        </legend>
+      </form>
+    </section>
+    <script defer>
+      //process the login and the register
+      document
+        .querySelector("#regForm button")
+        .addEventListener("click", doReg);
+      document
+        .querySelector("#regForm .Ed button")
+        .addEventListener("click", doEdit);
+      document
+        .querySelector("#regForm .Del button")
+        .addEventListener("click", doDelete);
+
+      document
+        .querySelector("#loginForm button")
+        .addEventListener("click", doLogin);
+      document
+        .querySelector("#loginForm  .Out button")
+        .addEventListener("click", doLogout);
+
+      function doReg(ev) {
+        ev.preventDefault();
+        console.log("Send a Register request");
+        let em = document.querySelector("#regForm .email").value;
+        let pass = document.querySelector("#regForm .pass").value;
+        let fname = document.querySelector("#regForm .fname").value;
+        let lname = document.querySelector("#regForm .lname").value;
+        let addr = document.querySelector("#regForm .addr").value;
+        //TODO: Add form validation
+        let user = {
+          email: em,
+          password: pass,
+          fname: fname,
+          lname: lname,
+          address: addr,
+        };
+        let endpoint = "register";
+        sendData(user, endpoint, registerSuccess);
+      }
+
+      function doEdit(ev) {
+        ev.preventDefault();
+        console.log("Send a Edit request");
+        let em = document.querySelector("#regForm .email").value;
+        let pass = document.querySelector("#regForm .pass").value;
+        let fname = document.querySelector("#regForm .fname").value;
+        let lname = document.querySelector("#regForm .lname").value;
+        let addr = document.querySelector("#regForm .addr").value;
+        //TODO: Add form validation
+        let user = {
+          email: em,
+          password: pass,
+          fname: fname,
+          lname: lname,
+          address: addr,
+        };
+        let endpoint = "edit";
+        sendData(user, endpoint, editSuccess);
+      }
+
+      function doDelete(ev) {
+        ev.preventDefault();
+        console.log("Send a Delete request");
+        let em = document.querySelector("#regForm .email").value;
+        let pass = document.querySelector("#regForm .pass").value;
+        let fname = document.querySelector("#regForm .fname").value;
+        let lname = document.querySelector("#regForm .lname").value;
+        let addr = document.querySelector("#regForm .addr").value;
+        //TODO: Add form validation
+        let user = {
+          email: em,
+          password: pass,
+          fname: fname,
+          lname: lname,
+          address: addr,
+        };
+        let endpoint = "delete";
+        sendData(user, endpoint, deleteSuccess);
+      }
+
+      function doLogin(ev) {
+        ev.preventDefault();
+        console.log("Send a login request");
+        let em = document.querySelector("#loginForm .email").value;
+        let pass = document.querySelector("#loginForm .pass").value;
+        //TODO: Add form validation
+        let user = { email: em, password: pass };
+        let endpoint = "login";
+        sendData(user, endpoint, loginSuccess);
+        fetchData(failure);
+      }
+
+      function doLogout(ev) {
+        ev.preventDefault();
+        console.log("Send a logout request");
+        let em = document.querySelector("#loginForm .email").value;
+        let pass = document.querySelector("#loginForm .pass").value;
+        //TODO: Add form validation
+        let user = { email: em, password: pass };
+        let endpoint = "logout";
+        sendData(user, endpoint, logoutSuccess);
+        fetchData(failure);
+      }
+
+      function sendData(user, endpoint, callback) {
+        let url = `http://localhost:4444/${endpoint}`;
+        let tokenId = sessionStorage.getItem("myapp-token");
+        let h = new Headers();
+        h.append("Content-Type", "application/json");
+        if (tokenId) {
+          h.append("Authorization", `Bearer ${tokenId}`);
+        }
+        // let h = new Headers();
+        // h.append("Content-Type", "application/json");
+        let req = new Request(url, {
+          method: "POST",
+          headers: h,
+          body: JSON.stringify(user),
+        });
+        fetch(req)
+          .then((res) => res.json())
+          .then((content) => {
+            //we have a response
+            if ("error" in content) {
+              //bad attempt
+              failure(content.error);
+            }
+            if ("data" in content) {
+              //it worked
+              callback(content.data);
+            }
+          })
+          .catch(failure);
+      }
+
+      function fetchData(callback) {
+        //http://alloworigin.com/get?url=
+        let url = `http://localhost:4444/store`;
+        let tokenId = sessionStorage.getItem("myapp-token");
+
+        let h = new Headers();
+        h.append("Content-Type", "application/json");
+        h.append("Accept", "application/json");
+        if (tokenId) {
+          h.append("Authorization", `Bearer ${tokenId}`);
+        }
+        //h.append("Access-Control-Allow-Credentials", true);
+        //h.append("Access-Control-Allow-Headers", "Authorization");
+        let req = new Request(url, {
+          method: "GET",
+          headers: h,
+          // mode: "cors",
+          // body: JSON.stringify({
+          //   code: 123,
+          //   message: "Test data.",
+          // }),
+        });
+        fetch(req)
+          .then((res) => res.json())
+          .then((content) => {
+            //we have a response
+            if ("error" in content) {
+              console.log("Content Fetched: ", content);
+              //bad attempt
+              failure(content.error);
+            }
+            if ("data" in content) {
+              //it worked
+              console.log("Data Fetched: ", data);
+              callback(content.data);
+            }
+          })
+          .catch(failure);
+      }
+
+      function loginSuccess(data) {
+        fetchData(failure);
+        //we have a token so put it in localstorage
+        console.log("token", data.token);
+        if (data.token !== undefined)
+          sessionStorage.setItem("myapp-token", data.token);
+        alert("You are logged in");
+      }
+
+      function logoutSuccess(data) {
+        //fetchData(failure);
+        //we have a token so put it in localstorage
+        slocalStorage.removeItem("myapp-token");
+        console.log("data.message", data.message);
+        alert(data.message);
+      }
+
+      function registerSuccess(data) {
+        //user has been registered
+        console.log("new user created", data);
+        if (data.token !== undefined)
+          sessionStorage.setItem("myapp-token", data.token);
+        alert("You have been registered");
+      }
+
+      function deleteSuccess(data) {
+        //user has been registered
+        console.log("user has been deleted", data);
+        if (data.token !== undefined)
+          sessionStorage.setItem("myapp-token", data.token);
+        alert("This user has been deleted");
+      }
+
+      function editSuccess(data) {
+        //user has been registered
+        console.log("user Edited", data);
+        if (data.token !== undefined)
+          sessionStorage.setItem("myapp-token", data.token);
+        alert("This user has been Edited successfully..");
+      }
+
+      function failure(err) {
+        alert(err.message);
+        console.warn(err.code, err.message);
+      }
+    </script>
+  </body>
+</html>

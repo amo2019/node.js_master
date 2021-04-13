@@ -1,0 +1,18 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "How to use NodeJS with Express and Bcrypt to create a full lifecycle website for registering and logging in",
+  "main": "server-route.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.3",
+    "stripe": "^8.120.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js "
+  },
+  "author": "",
+  "license": "ISC"
+}

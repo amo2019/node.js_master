@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pizza | Store</title>
+    <meta name="description" content="This is the description" />
+
+    <script src="https://checkout.stripe.com/checkout.js" defer></script>
+    <script>
+      var stripePublicKey = "pk_test_PFgySFLR8fNu4J2j6YH6qNRn00x71zsrWj";
+    </script>
+    <!-- Static Assets -->
+
+    <script
+      type="text/javascript"
+      charset="utf-8"
+      src="public/store.js"
+      defer
+    ></script>
+    <link rel="stylesheet" type="text/css" href="public/styles.css" />
+  </head>
+  <body>
+    <header class="">
+      <!-- <nav class="main-nav nav">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="store.html">STORE</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+      </nav>
+      <h1 class="band-name band-name-large">Pizza</h1> -->
+    </header>
+    <section class="container content-section">
+      <h2 class="section-header">PIZZA</h2>
+      <div class="shop-items">
+        <div class="shop-item" data-item-id="1">
+          <span class="shop-item-title">Pizza 1</span>
+          <img class="shop-item-image" src="public/pizza1.jpg" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$12.99</span>
+            <button class="btn btn-primary shop-item-button" type="button">
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+        <div class="shop-item" data-item-id="2">
+          <span class="shop-item-title">Pizza 2</span>
+          <img class="shop-item-image" src="public/pizza2.png" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$14.99</span>
+            <button class="btn btn-primary shop-item-button" type="button">
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+        <div class="shop-item" data-item-id="3">
+          <span class="shop-item-title">Pizza 3</span>
+          <img class="shop-item-image" src="public/pizza3.jpg" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$9.99</span>
+            <button class="btn btn-primary shop-item-button" type="button">
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+        <div class="shop-item" data-item-id="4">
+          <span class="shop-item-title">Pizza 4</span>
+          <img class="shop-item-image" src="public/pizza4.jpg" />
+          <div class="shop-item-details">
+            <span class="shop-item-price">$19.99</span>
+            <button class="btn btn-primary shop-item-button" type="button">
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container content-section">
+      <h2 class="section-header">CART</h2>
+      <div class="cart-row">
+        <span class="cart-item cart-header cart-column">ITEM</span>
+        <span class="cart-price cart-header cart-column">PRICE</span>
+        <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+      </div>
+      <div class="cart-items"></div>
+      <div class="cart-total">
+        <strong class="cart-total-title">Total</strong>
+        <span class="cart-total-price">$0</span>
+      </div>
+      <div style="display: flex">
+        <button class="btn btn-primary btn-purchase" type="button">
+          PURCHASE
+        </button>
+        <button class="btn btn-primary btn-save" type="button">
+          RETRIEVE CART
+        </button>
+      </div>
+    </section>
+  </body>
+</html>
