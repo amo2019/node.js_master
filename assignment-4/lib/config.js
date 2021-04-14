@@ -14,13 +14,13 @@ environments.staging = {
   hashingSecret: "thisIsASecret",
   maxChecks: 5,
   twilio: {
-    accountSid: "ACb32d411ad7fe886aac54c665d25e5c5d",
-    authToken: "9455e3eb3109edc12e3d8c92768f7a67",
+    accountSid: "",
+    authToken: "",
     fromPhone: "+15005550006",
   },
   templateGlobals: {
     appName: "Pizza Store",
-    companyName: "NotARealCompany, Inc.",
+    companyName: "Company, Inc.",
     yearCreated: "2020",
     baseUrl: "http://localhost:3000/",
   },
@@ -39,10 +39,10 @@ environments.production = {
     fromPhone: "",
   },
   templateGlobals: {
-    appName: "UptimeChecker",
-    companyName: "NotARealCompany, Inc.",
+    appName: "Pizza Store",
+    companyName: "Company, Inc.",
     yearCreated: "2020",
-    baseUrl: "http://localhost:5000/",
+    baseUrl: "/",
   },
 };
 

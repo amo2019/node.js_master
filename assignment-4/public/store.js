@@ -65,7 +65,7 @@ var stripeHandler = StripeCheckout.configure({
       }
     }
 
-    let url = `http://localhost:3000/api/purchases`;
+    let url = `/api/purchases`;
     let h = new Headers();
     h.append("Content-Type", "application/json");
     h.append("Accept", "application/json");
@@ -113,7 +113,7 @@ function fetchData(callback) {
       console.log("token err:", e);
     }
   }
-  let url = `http://localhost:3000/api/stores`;
+  let url = `/api/stores`;
   let h = new Headers();
   h.append("userEmail", userEmail);
   h.append("Accept", "application/json");

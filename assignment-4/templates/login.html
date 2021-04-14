@@ -223,7 +223,7 @@
       }
 
       function sendData(user, endpoint, callback) {
-        let url = `http://localhost:4444/${endpoint}`;
+        let url = `/${endpoint}`;
         let tokenId = sessionStorage.getItem("myapp-token");
         let h = new Headers();
         h.append("Content-Type", "application/json");
@@ -255,7 +255,7 @@
 
       function fetchData(callback) {
         //http://alloworigin.com/get?url=
-        let url = `http://localhost:4444/store`;
+        let url = `/store`;
         let tokenId = sessionStorage.getItem("myapp-token");
 
         let h = new Headers();

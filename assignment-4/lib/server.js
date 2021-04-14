@@ -168,21 +168,24 @@ server.router = {
 
 // Init script
 server.init = function () {
-  // Start the HTTP server
-  server.httpServer.listen(config.httpPort, function () {
-    console.log(
-      "\x1b[36m%s\x1b[0m",
-      "The HTTP server is running on port " + config.httpPort
-    );
-  });
-
-  // Start the HTTPS server
-  server.httpsServer.listen(config.httpsPort, function () {
-    console.log(
-      "\x1b[35m%s\x1b[0m",
-      "The HTTPS server is running on port " + config.httpsPort
-    );
-  });
+  if (process.env.NODE_ENV === 'production') {
+    const PORT = process.env.PORT || config.httpPort;
+      // Start the HTTP server
+      server.httpServer.listen(PORT, function () {
+        console.log(
+          "\x1b[36m%s\x1b[0m",
+          "The HTTP server is running on port " + PORT
+        );
+      });
+  } else if (process.env.NODE_ENV !== 'production'){
+     // Start the HTTPS server
+    server.httpsServer.listen(config.httpsPort, function () {
+      console.log(
+        "\x1b[35m%s\x1b[0m",
+        "The HTTPS server is running on port " + config.httpsPort
+      );
+    });
+  }
 };
 
 // Export the module

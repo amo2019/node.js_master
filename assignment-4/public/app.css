@@ -114,9 +114,11 @@ body.loggedIn .header ul li.loggedOut {
 }
 
 .footer {
+  position: absolute;
   width: 100%;
-  background-color: #252323;
-  padding: 50px 0;
+  background-color: #383030;
+  padding: 40px 0;
+  margin-top: 1rem;
   text-align: center;
   border-width: 1px 0 0 0;
   border-color: #fff;
@@ -184,12 +186,15 @@ button.cta:visited {
 
 .cta.blue {
   background-color: #214478 !important;
+  margin-bottom: 6rem;
+
 }
 
 #cta_blue:disabled {
   background: #999;
   color: #555;
   cursor: not-allowed;
+  margin-bottom: 1rem;
 }
 
 .cta.green {

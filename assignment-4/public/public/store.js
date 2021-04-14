@@ -49,7 +49,7 @@ var stripeHandler = StripeCheckout.configure({
       });
     }
 
-    let url = `http://localhost:3000/api/purchases`;
+    let url = `/api/purchases`;
     let h = new Headers();
     h.append("Content-Type", "application/json");
     h.append("Accept", "application/json");
@@ -82,7 +82,7 @@ var stripeHandler = StripeCheckout.configure({
 
 function fetchData(callback) {
   //https://api.allorigins.win/get?url=
-  let url = `http://localhost:3000/api/stores`;
+  let url = `/api/stores`;
   let h = new Headers();
   h.append("Content-Type", "text/plain");
   h.append("Accept", "application/json");
