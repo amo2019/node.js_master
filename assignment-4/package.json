@@ -1,18 +1,24 @@
 {
-  "name": "login",
+  "name": "pizza-store",
   "version": "1.0.0",
-  "description": "How to use NodeJS without Express and third party libraries",
+  "description": "Node.js Master with no frameworks and no dependencies",
   "main": "index.js",
-  "dependencies": {
+  "devDependencies": {
     "cors": "^2.8.5",
-    "nodemon": "^2.0.3",
-    "stripe": "^8.120.0"
+    "nodemon": "^2.0.3"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js "
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "15.1.0",
+    "npm": "7.9.0"
   },
   "author": "Amin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+  
+  }
 }

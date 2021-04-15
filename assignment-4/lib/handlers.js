@@ -35,7 +35,7 @@ handlers.index = function (data, callback) {
     var templateData = {
       "head.title": "Uptime Monitoring - Made Simple",
       "head.description":
-        "simple uptime monitoring ",
+        "We offer free, simple uptime monitoring for HTTP/HTTPS sites all kinds. When your site goes down, we'll send you a text to let you know",
       "body.class": "index",
     };
     // Read in a template as a string

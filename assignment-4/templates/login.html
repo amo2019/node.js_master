@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap"
       rel="stylesheet"
     />
+    <script type="text/javascript" charset="utf-8" src="/lib/constants.js"></script>
     <style>
       html {
         font-size: 20px;
@@ -120,6 +121,8 @@
       </form>
     </section>
     <script defer>
+
+ console.log("process.env.NODE_ENV-API_LOGIN:", process.env.NODE_ENV);
       //process the login and the register
       document
         .querySelector("#regForm button")
@@ -223,7 +226,7 @@
       }
 
       function sendData(user, endpoint, callback) {
-        let url = `/${endpoint}`;
+        let url = `API_LOGIN/${endpoint}`;
         let tokenId = sessionStorage.getItem("myapp-token");
         let h = new Headers();
         h.append("Content-Type", "application/json");
@@ -255,7 +258,7 @@
 
       function fetchData(callback) {
         //http://alloworigin.com/get?url=
-        let url = `/store`;
+        let url = `API_LOGIN/store`;
         let tokenId = sessionStorage.getItem("myapp-token");
 
         let h = new Headers();

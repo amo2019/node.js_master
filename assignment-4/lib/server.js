@@ -149,6 +149,7 @@ server.unifiedServer = function (req, res) {
 };
 
 // Define the request router
+//"account/api/tokens": handlers.tokens,
 server.router = {
   "": handlers.index,
   "account/create": handlers.accountCreate,
@@ -166,26 +167,32 @@ server.router = {
   public: handlers.public,
 };
 
+
 // Init script
 server.init = function () {
-  if (process.env.NODE_ENV === 'production') {
-    const PORT = process.env.PORT || config.httpPort;
-      // Start the HTTP server
-      server.httpServer.listen(PORT, function () {
-        console.log(
-          "\x1b[36m%s\x1b[0m",
-          "The HTTP server is running on port " + PORT
-        );
-      });
-  } else if (process.env.NODE_ENV !== 'production'){
-     // Start the HTTPS server
-    server.httpsServer.listen(config.httpsPort, function () {
+  if (process.env.NODE_ENV === "development"){
+    console.log("process.env.NODE_ENV-dev:", process.env.NODE_ENV);
+  // Start the HTTPS server
+ server.httpsServer.listen(config.httpsPort, function () {
+  console.log(
+    "\x1b[35m%s\x1b[0m",
+    "The HTTPS server is running on port " + config.httpsPort
+  );
+});
+ 
+  } else {
+  // Start the HTTP server
+  console.log("process.env.NODE_ENV-prod:", process.env.NODE_ENV);
+    server.httpServer.listen(config.httpPort, function () {
       console.log(
-        "\x1b[35m%s\x1b[0m",
-        "The HTTPS server is running on port " + config.httpsPort
+        "\x1b[36m%s\x1b[0m",
+        "The HTTP server is running on port " + config.httpPort
       );
     });
   }
+  
+
+ 
 };
 
 // Export the module

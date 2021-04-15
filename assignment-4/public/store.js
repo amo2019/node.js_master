@@ -1,3 +1,9 @@
+var constants = require("../lib/constants");
+ const API_PURCHASES = constants.url.API_PURCHASES
+ const API_STORES = constants.url.API_STORES
+ console.log("API_PURCHASES:", API_PURCHASES, API_STORES )
+ console.log("process.env.NODE_ENV-config:", process.env.NODE_ENV);
+
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
@@ -65,7 +71,7 @@ var stripeHandler = StripeCheckout.configure({
       }
     }
 
-    let url = `/api/purchases`;
+    let url = `API_PURCHASES/api/purchases`;
     let h = new Headers();
     h.append("Content-Type", "application/json");
     h.append("Accept", "application/json");
@@ -113,7 +119,7 @@ function fetchData(callback) {
       console.log("token err:", e);
     }
   }
-  let url = `/api/stores`;
+  let url = `API_STORES/api/stores`;
   let h = new Headers();
   h.append("userEmail", userEmail);
   h.append("Accept", "application/json");

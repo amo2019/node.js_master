@@ -1,8 +1,11 @@
 /*
  * Create and export configuration variables
  *
- */
-
+ */ 
+var constants = require("./constants");
+ const API_BASE = constants.url.API_BASE
+ console.log("API_BASE:", API_BASE)
+ console.log("process.env.NODE_ENV-config:", process.env.NODE_ENV);
 // Container for all environments
 var environments = {};
 
@@ -14,15 +17,15 @@ environments.staging = {
   hashingSecret: "thisIsASecret",
   maxChecks: 5,
   twilio: {
-    accountSid: "",
-    authToken: "",
+    accountSid: "ACb32d411ad7fe886aac54c665d25e5c5d",
+    authToken: "9455e3eb3109edc12e3d8c92768f7a67",
     fromPhone: "+15005550006",
   },
   templateGlobals: {
     appName: "Pizza Store",
     companyName: "Company, Inc.",
     yearCreated: "2020",
-    baseUrl: "http://localhost:3000/",
+    baseUrl: API_BASE,
   },
 };
 
@@ -42,7 +45,7 @@ environments.production = {
     appName: "Pizza Store",
     companyName: "Company, Inc.",
     yearCreated: "2020",
-    baseUrl: "/",
+    baseUrl: API_BASE,
   },
 };
 
