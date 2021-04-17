@@ -6,14 +6,6 @@ tasks from Node.js Master Class with no frameworks and no dependencies
 
 Details:
 
-It is time to build the Admin CLI for the pizza-delivery app you built in the previous assignments. Please build a CLI interface that would allow the manager of the pizza place to:
-
-1. View all the current menu items
-
-2. View all the recent orders in the system (orders placed in the last 24 hours)
-
-3. Lookup the details of a specific order by order ID
-
-4. View all the users who have signed up in the last 24 hours
-
-5. Lookup the details of a specific user by email address
+- building Stripe API without third party libraries.
+- building MailGun API without third party libraries.
+- in addition to many other features, Pirple changes their requirements regularly probably to prevent copy and paste.
